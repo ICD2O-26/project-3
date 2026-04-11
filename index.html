@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ICD2O — Student Python Game Showcase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --surface: #16161a;
+      --border: #2a2a32;
+      --accent: #c8f04a;
+      --accent2: #4af0c8;
+      --text: #e8e8f0;
+      --muted: #7a7a90;
+      --code-bg: #0a0a0c;
+      --radius: 4px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Subtle grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    /* Header */
+    header {
+      margin-bottom: 64px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .course-tag {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 4px 10px;
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 520px;
+    }
+
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      margin: 28px 0;
+    }
+
+    /* Instructions banner */
+    .instructions {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent2);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 48px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.8;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    .instructions strong {
+      color: var(--accent2);
+    }
+
+    /* Game cards */
+    .games-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .card-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .card-index {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      min-width: 28px;
+    }
+
+    .card-name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .card-game {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-top: 3px;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      padding: 8px 14px;
+      border-radius: var(--radius);
+      border: 1px solid;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-code {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--muted);
+    }
+    .btn-code:hover {
+      border-color: var(--text);
+      color: var(--text);
+    }
+
+    .btn-copy {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--muted);
+    }
+    .btn-copy:hover {
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+    .btn-copy.copied {
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+
+    .btn-run {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #0d0d0f;
+      font-weight: 700;
+    }
+    .btn-run:hover {
+      background: #d9ff55;
+      border-color: #d9ff55;
+    }
+
+    /* Code panel */
+    .code-panel {
+      display: none;
+      border-top: 1px solid var(--border);
+      position: relative;
+    }
+
+    .code-panel.open {
+      display: block;
+    }
+
+    .code-lang {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      padding: 10px 20px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    pre {
+      background: var(--code-bg);
+      margin: 8px 0 0;
+      padding: 20px 24px;
+      overflow-x: auto;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      line-height: 1.7;
+      color: #c8d3f5;
+      max-height: 400px;
+    }
+
+    /* Syntax-like coloring via spans */
+    .kw { color: #c792ea; }
+    .cm { color: #546e7a; font-style: italic; }
+    .st { color: #c3e88d; }
+    .nm { color: #f78c6c; }
+
+    /* Footer */
+    footer {
+      margin-top: 80px;
+      text-align: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      animation: fadeUp 0.5s 0.4s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 560px) {
+      .card-header { flex-direction: column; align-items: flex-start; }
+      .card-actions { width: 100%; }
+      .btn { flex: 1; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="course-tag">ICD2O · Introduction to Computer Studies</div>
+    <h1>Student Python<br/><span>Game Showcase</span></h1>
+    <div class="divider"></div>
+    <p class="subtitle">A collection of Python games created by Grade 10 students. Click any project to explore the code.</p>
+  </header>
+
+  <div class="instructions">
+    <strong>How to play a game →</strong><br/>
+    1. Click <strong>View Code</strong> to see the source code.<br/>
+    2. Click <strong>Copy Code</strong> to copy it to your clipboard.<br/>
+    3. Click <strong>Run on Programiz</strong> to open the Python playground, then paste (Ctrl+V) and press Run.
+  </div>
+
+  <div class="games-grid" id="gamesGrid">
+    <!-- Cards injected by JS -->
+  </div>
+
+  <footer>
+    <p>ICD2O &mdash; Python Game Showcase &mdash; Ottawa-Carleton District School Board</p>
+  </footer>
+
+</div>
+
+<script>
+  const students = [
+    {
+      name: "Aaheli",
+      game: "Snake Game",
+      code: `import pygame
+import random
+
+# Initialize Pygame
+pygame.init()
+
+# Colors
+WHITE = (255, 255, 255)
+BLACK = (15, 15, 15)       # Deep dark background
+GRID_COLOR = (30, 30, 30)  # Subtle grid lines
+RED = (220, 20, 60)        # Crimson apple
+GREEN = (50, 205, 50)      # Lime green snake
+BROWN = (139, 69, 19)      # Stem
+LEAF = (34, 139, 34)       # Forest green leaf
+
+# Window Dimensions
+WIDTH = 600
+HEIGHT = 400
+display = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption('Snake Game: Fixed & Improved')
+
+clock = pygame.time.Clock()
+snake_block = 20  
+snake_speed = 12
+
+score_font = pygame.font.SysFont("arial", 25, bold=True)
+
+def draw_grid():
+    for x in range(0, WIDTH, snake_block):
+        pygame.draw.line(display, GRID_COLOR, (x, 0), (x, HEIGHT))
+    for y in range(0, HEIGHT, snake_block):
+        pygame.draw.line(display, GRID_COLOR, (0, y), (WIDTH, y))
+
+def draw_apple(x, y):
+    center = (x + snake_block // 2, y + snake_block // 2 + 2)
+    radius = snake_block // 2 - 3
+    pygame.draw.circle(display, RED, center, radius)
+    stem_rect = [x + snake_block // 2 - 1, y + 2, 2, 5]
+    pygame.draw.rect(display, BROWN, stem_rect)
+    leaf_pos = [(x + snake_block // 2, y + 2), 
+                (x + snake_block // 2 + 5, y), 
+                (x + snake_block // 2 + 2, y + 4)]
+    pygame.draw.polygon(display, LEAF, leaf_pos)
+
+def display_score(score):
+    value = score_font.render(f"Score: {score}", True, WHITE)
+    display.blit(value, [15, 10])
+
+def game_loop():
+    game_over = False
+    game_close = False
+
+    x1, y1 = WIDTH / 2, HEIGHT / 2
+    x1_change, y1_change = 0, 0
+
+    snake_list = []
+    length_of_snake = 1
+
+    foodx = round(random.randrange(0, WIDTH - snake_block) / 20.0) * 20.0
+    foody = round(random.randrange(0, HEIGHT - snake_block) / 20.0) * 20.0
+
+    while not game_over:
+        while game_close:
+            display.fill(BLACK)
+            msg = score_font.render("GAME OVER! C-Play Again or Q-Quit", True, WHITE)
+            display.blit(msg, [WIDTH / 6, HEIGHT / 2])
+            pygame.display.update()
+
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_q:
+                        game_over = True
+                        game_close = False
+                    if event.key == pygame.K_c:
+                        game_loop()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                game_over = True
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT and x1_change == 0:
+                    x1_change = -snake_block
+                    y1_change = 0
+                elif event.key == pygame.K_RIGHT and x1_change == 0:
+                    x1_change = snake_block
+                    y1_change = 0
+                elif event.key == pygame.K_UP and y1_change == 0:
+                    y1_change = -snake_block
+                    x1_change = 0
+                elif event.key == pygame.K_DOWN and y1_change == 0:
+                    y1_change = snake_block
+                    x1_change = 0
+
+        if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
+            game_close = True
+
+        x1 += x1_change
+        y1 += y1_change
+        display.fill(BLACK)
+        draw_grid()
+        draw_apple(foodx, foody)
+
+        snake_head = [x1, y1]
+        snake_list.append(snake_head)
+        if len(snake_list) > length_of_snake:
+            del snake_list[0]
+
+        for x in snake_list[:-1]:
+            if x == snake_head:
+                game_close = True
+
+        for segment in snake_list:
+            pygame.draw.rect(display, GREEN, [segment[0], segment[1], snake_block - 2, snake_block - 2], border_radius=4)
+
+        display_score(length_of_snake - 1)
+        pygame.display.update()
+
+        if x1 == foodx and y1 == foody:
+            foodx = round(random.randrange(0, WIDTH - snake_block) / 20.0) * 20.0
+            foody = round(random.randrange(0, HEIGHT - snake_block) / 20.0) * 20.0
+            length_of_snake += 1
+
+        clock.tick(snake_speed)
+
+    pygame.quit()
+    quit()
+
+game_loop()`
+    },
+    // ADD MORE STUDENTS HERE
+  ];
+
+  function escapeHtml(str) {
+    return str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  function buildCards() {
+    const grid = document.getElementById('gamesGrid');
+    students.forEach((s, i) => {
+      const delay = (i * 0.07).toFixed(2);
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style.animationDelay = delay + 's';
+
+      card.innerHTML = `
+        <div class="card-header">
+          <div class="card-info">
+            <span class="card-index">${String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <div class="card-name">${s.name}</div>
+              <div class="card-game">${s.game}</div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-code" onclick="toggleCode(this)">▶ View Code</button>
+            <button class="btn btn-copy" onclick="copyCode(this, ${i})">⧉ Copy Code</button>
+            <a class="btn btn-run" href="https://programiz.pro/ide/python" target="_blank">▷ Run on Programiz</a>
+          </div>
+        </div>
+        <div class="code-panel">
+          <div class="code-lang">python</div>
+          <pre>${escapeHtml(s.code)}</pre>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  function toggleCode(btn) {
+    const panel = btn.closest('.card').querySelector('.code-panel');
+    const open = panel.classList.toggle('open');
+    btn.textContent = open ? '▼ Hide Code' : '▶ View Code';
+  }
+
+  function copyCode(btn, index) {
+    navigator.clipboard.writeText(students[index].code).then(() => {
+      btn.textContent = '✓ Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = '⧉ Copy Code';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+
+  buildCards();
+</script>
+</body>
+</html>
