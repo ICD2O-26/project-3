@@ -17,9 +17,7 @@
       --code-bg: #0a0a0c;
       --radius: 4px;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       background: var(--bg);
       color: var(--text);
@@ -27,8 +25,6 @@
       min-height: 100vh;
       overflow-x: hidden;
     }
-
-    /* Subtle grid background */
     body::before {
       content: '';
       position: fixed;
@@ -41,7 +37,6 @@
       pointer-events: none;
       z-index: 0;
     }
-
     .container {
       position: relative;
       z-index: 1;
@@ -49,13 +44,7 @@
       margin: 0 auto;
       padding: 60px 24px 100px;
     }
-
-    /* Header */
-    header {
-      margin-bottom: 64px;
-      animation: fadeUp 0.6s ease both;
-    }
-
+    header { margin-bottom: 64px; animation: fadeUp 0.6s ease both; }
     .course-tag {
       display: inline-block;
       font-family: 'Space Mono', monospace;
@@ -68,7 +57,6 @@
       border-radius: var(--radius);
       margin-bottom: 20px;
     }
-
     h1 {
       font-size: clamp(2.2rem, 5vw, 3.4rem);
       font-weight: 800;
@@ -77,26 +65,9 @@
       color: var(--text);
       margin-bottom: 14px;
     }
-
-    h1 span {
-      color: var(--accent);
-    }
-
-    .subtitle {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 520px;
-    }
-
-    .divider {
-      width: 60px;
-      height: 3px;
-      background: var(--accent);
-      margin: 28px 0;
-    }
-
-    /* Instructions banner */
+    h1 span { color: var(--accent); }
+    .subtitle { font-size: 1rem; color: var(--muted); line-height: 1.6; max-width: 520px; }
+    .divider { width: 60px; height: 3px; background: var(--accent); margin: 28px 0; }
     .instructions {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -110,18 +81,8 @@
       line-height: 1.8;
       animation: fadeUp 0.6s 0.1s ease both;
     }
-
-    .instructions strong {
-      color: var(--accent2);
-    }
-
-    /* Game cards */
-    .games-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
+    .instructions strong { color: var(--accent2); }
+    .games-grid { display: flex; flex-direction: column; gap: 20px; }
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -130,12 +91,7 @@
       transition: border-color 0.2s, transform 0.2s;
       animation: fadeUp 0.5s ease both;
     }
-
-    .card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
+    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
     .card-header {
       display: flex;
       align-items: center;
@@ -144,40 +100,11 @@
       gap: 16px;
       flex-wrap: wrap;
     }
-
-    .card-info {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .card-index {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--muted);
-      min-width: 28px;
-    }
-
-    .card-name {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .card-game {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--accent);
-      margin-top: 3px;
-    }
-
-    .card-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    /* Buttons */
+    .card-info { display: flex; align-items: center; gap: 16px; }
+    .card-index { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--muted); min-width: 28px; }
+    .card-name { font-size: 1.05rem; font-weight: 600; color: var(--text); }
+    .card-game { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--accent); margin-top: 3px; }
+    .card-actions { display: flex; gap: 10px; flex-wrap: wrap; }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -193,53 +120,15 @@
       transition: all 0.15s;
       white-space: nowrap;
     }
-
-    .btn-code {
-      background: transparent;
-      border-color: var(--border);
-      color: var(--muted);
-    }
-    .btn-code:hover {
-      border-color: var(--text);
-      color: var(--text);
-    }
-
-    .btn-copy {
-      background: transparent;
-      border-color: var(--border);
-      color: var(--muted);
-    }
-    .btn-copy:hover {
-      border-color: var(--accent2);
-      color: var(--accent2);
-    }
-    .btn-copy.copied {
-      border-color: var(--accent2);
-      color: var(--accent2);
-    }
-
-    .btn-run {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #0d0d0f;
-      font-weight: 700;
-    }
-    .btn-run:hover {
-      background: #d9ff55;
-      border-color: #d9ff55;
-    }
-
-    /* Code panel */
-    .code-panel {
-      display: none;
-      border-top: 1px solid var(--border);
-      position: relative;
-    }
-
-    .code-panel.open {
-      display: block;
-    }
-
+    .btn-code { background: transparent; border-color: var(--border); color: var(--muted); }
+    .btn-code:hover { border-color: var(--text); color: var(--text); }
+    .btn-copy { background: transparent; border-color: var(--border); color: var(--muted); }
+    .btn-copy:hover { border-color: var(--accent2); color: var(--accent2); }
+    .btn-copy.copied { border-color: var(--accent2); color: var(--accent2); }
+    .btn-run { background: var(--accent); border-color: var(--accent); color: #0d0d0f; font-weight: 700; }
+    .btn-run:hover { background: #d9ff55; border-color: #d9ff55; }
+    .code-panel { display: none; border-top: 1px solid var(--border); position: relative; }
+    .code-panel.open { display: block; }
     .code-lang {
       font-family: 'Space Mono', monospace;
       font-size: 0.65rem;
@@ -248,7 +137,6 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
     }
-
     pre {
       background: var(--code-bg);
       margin: 8px 0 0;
@@ -260,14 +148,6 @@
       color: #c8d3f5;
       max-height: 400px;
     }
-
-    /* Syntax-like coloring via spans */
-    .kw { color: #c792ea; }
-    .cm { color: #546e7a; font-style: italic; }
-    .st { color: #c3e88d; }
-    .nm { color: #f78c6c; }
-
-    /* Footer */
     footer {
       margin-top: 80px;
       text-align: center;
@@ -276,12 +156,10 @@
       color: var(--muted);
       animation: fadeUp 0.5s 0.4s ease both;
     }
-
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
     @media (max-width: 560px) {
       .card-header { flex-direction: column; align-items: flex-start; }
       .card-actions { width: 100%; }
@@ -291,37 +169,56 @@
 </head>
 <body>
 <div class="container">
-
   <header>
-    <div class="course-tag">ICD2O · Introduction to Computer Studies</div>
+    <div class="course-tag">ICD2O &middot; Introduction to Computer Studies</div>
     <h1>Student Python<br/><span>Game Showcase</span></h1>
     <div class="divider"></div>
-    <p class="subtitle">A collection of Python games created by Grade 10 students. Click any project to explore the code.</p>
+    <p class="subtitle">A collection of Python games and apps created by Grade 10 students. Click any project to explore the code.</p>
   </header>
-
   <div class="instructions">
-    <strong>How to play a game →</strong><br/>
+    <strong>How to run a Python game &rarr;</strong><br/>
     1. Click <strong>View Code</strong> to see the source code.<br/>
     2. Click <strong>Copy Code</strong> to copy it to your clipboard.<br/>
-    3. Click <strong>Run on Programiz</strong> to open the Python playground, then paste (Ctrl+V) and press Run.
+    3. Click <strong>Run on Programiz</strong> to open the Python playground, then paste (Ctrl+V) and press Run.<br/>
+    <strong>JS games</strong> marked with a <span style="color:var(--accent2)">JS</span> badge open and play directly &mdash; no copy needed.
   </div>
-
-  <div class="games-grid" id="gamesGrid">
-    <!-- Cards injected by JS -->
-  </div>
-
+  <div class="games-grid" id="gamesGrid"></div>
   <footer>
     <p>ICD2O &mdash; Python Game Showcase &mdash; Ottawa-Carleton District School Board</p>
   </footer>
-
 </div>
-
 <script>
   const students = [
-    {
-      name: "Aaheli",
-      game: "Snake Game",
-      code: `import pygame
+    { name: "Abdelrahman", game: "Water Tracker", code: `# Water Tracker Program
+# This program tracks daily water intake
+
+def check_goal(glasses):
+    """This function checks if user met the goal"""
+    if glasses >= 8:
+        return True
+    else:
+        return False
+
+# STEP 1: Get input from user
+glasses_drank = int(input("How many glasses of water did you drink today? "))
+
+# STEP 2: Check if goal is met
+goal_met = check_goal(glasses_drank)
+
+# Show result
+if goal_met == True:
+    print("Great job! You met your goal!")
+else:
+    print("Keep going! Drink more water!")
+
+# STEP 3: Calculate remaining glasses
+if glasses_drank < 8:
+    glasses_left = 8 - glasses_drank
+    print("You need", glasses_left, "more glasses today.")
+else:
+    print("You are hydrated! Good work!")
+` },
+    { name: "Aaheli", game: "Snake Game", code: `import pygame
 import random
 
 # Initialize Pygame
@@ -355,11 +252,16 @@ def draw_grid():
         pygame.draw.line(display, GRID_COLOR, (0, y), (WIDTH, y))
 
 def draw_apple(x, y):
+    # Apple Body
     center = (x + snake_block // 2, y + snake_block // 2 + 2)
     radius = snake_block // 2 - 3
     pygame.draw.circle(display, RED, center, radius)
+    
+    # Stem
     stem_rect = [x + snake_block // 2 - 1, y + 2, 2, 5]
     pygame.draw.rect(display, BROWN, stem_rect)
+    
+    # Tiny Leaf
     leaf_pos = [(x + snake_block // 2, y + 2), 
                 (x + snake_block // 2 + 5, y), 
                 (x + snake_block // 2 + 2, y + 4)]
@@ -379,10 +281,12 @@ def game_loop():
     snake_list = []
     length_of_snake = 1
 
+    # Spawn Apple
     foodx = round(random.randrange(0, WIDTH - snake_block) / 20.0) * 20.0
     foody = round(random.randrange(0, HEIGHT - snake_block) / 20.0) * 20.0
 
     while not game_over:
+
         while game_close:
             display.fill(BLACK)
             msg = score_font.render("GAME OVER! C-Play Again or Q-Quit", True, WHITE)
@@ -400,7 +304,9 @@ def game_loop():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 game_over = True
+            
             if event.type == pygame.KEYDOWN:
+                # Fixed movement logic and prevented 180-degree suicide turns
                 if event.key == pygame.K_LEFT and x1_change == 0:
                     x1_change = -snake_block
                     y1_change = 0
@@ -414,30 +320,36 @@ def game_loop():
                     y1_change = snake_block
                     x1_change = 0
 
+        # Boundary Check
         if x1 >= WIDTH or x1 < 0 or y1 >= HEIGHT or y1 < 0:
             game_close = True
 
         x1 += x1_change
         y1 += y1_change
         display.fill(BLACK)
+        
         draw_grid()
         draw_apple(foodx, foody)
 
         snake_head = [x1, y1]
         snake_list.append(snake_head)
+        
         if len(snake_list) > length_of_snake:
             del snake_list[0]
 
+        # Self-collision check
         for x in snake_list[:-1]:
             if x == snake_head:
                 game_close = True
 
+        # Draw Snake with rounded segments
         for segment in snake_list:
             pygame.draw.rect(display, GREEN, [segment[0], segment[1], snake_block - 2, snake_block - 2], border_radius=4)
 
         display_score(length_of_snake - 1)
         pygame.display.update()
 
+        # Eating Logic
         if x1 == foodx and y1 == foody:
             foodx = round(random.randrange(0, WIDTH - snake_block) / 20.0) * 20.0
             foody = round(random.randrange(0, HEIGHT - snake_block) / 20.0) * 20.0
@@ -448,9 +360,2085 @@ def game_loop():
     pygame.quit()
     quit()
 
-game_loop()`
-    },
-    // ADD MORE STUDENTS HERE
+game_loop()
+
+` },
+    { name: "Colin", game: "Pong Game", code: `#This is my pong game so far
+# coded in Python using microsoft visual studio code
+
+
+# Colin's Pong Game
+
+
+import turtle   # I'm using the turtle module because it has a built-in graphics library
+import winsound  # used to play sounds
+import time  # for the count down before the ball moves
+
+
+# --- Global State Variables ---
+final_screen = None
+in_final_screen = False
+game_running = False  # game starts paused
+
+
+# --- Screen Setup ---
+wn = turtle.Screen()  # creates the game window Screen is a built in function in turtle
+wn.title("Colin's Pong Game")  # the title... duh
+wn.bgcolor("black")  # set the background colour
+wn.setup(width=800, height=600)  # the size of the game window 800 x 600 pixels
+wn.tracer(0)  # turns off the automatic animations, i'll control that with wn.update later
+
+
+# --- Menu Screen ---
+menu = turtle.Turtle()   # this is the main menu showing the title by me and the instructions
+menu.speed(0)
+menu.color("white")
+menu.penup()
+menu.hideturtle()
+menu.goto(0, 100)
+menu.write("PONG", align="center", font=("Courier", 48, "bold"))
+menu.goto(0, 50)
+menu.write("By Colin", align="center", font=("Courier", 48, "bold"))
+menu.goto(0, -50)
+menu.write("Press SPACE to Start", align="center", font=("Courier", 24, "normal"))
+menu.goto(0, -90)
+menu.write("Press X to End Game", align="center", font=("Courier", 18, "normal"))
+
+
+# --- Countdown Function ---
+def countdown():
+    count = turtle.Turtle()
+    count.speed(0)   # animation set to fastest
+    count.color("white")   # paddle colour
+    count.penup()   # prevents turtle from drawing lines when moving
+    count.hideturtle()   # hide because we don't need to see it drawing
+    count.goto(0, 0)
+
+
+    for text in ["3", "2", "1", "GO!"]:   # this add a countdown before the ball starts moving
+        count.clear()
+        count.write(text, align="center", font=("Courier", 48, "bold"))
+        wn.update()      # force screen refresh (because tracer(0) is on)
+        time.sleep(1)    # wait 1 second
+
+
+    count.clear()   # clears the count
+    wn.update()     #updates the screen
+
+
+# --- Score Variables ---
+score_a = 0   # player A's score variable starts at zero
+score_b = 0   # player B's score variable
+
+
+# --- Paddle A ---
+paddle_a = turtle.Turtle()   # Turtle is a built in Class in turtle
+paddle_a.speed(0)            # animation set to fastest
+paddle_a.shape("square")     # paddle shape
+paddle_a.color("white")      # paddle colour
+paddle_a.shapesize(stretch_wid=5, stretch_len=1)  # streatched the square into a vertice rectangle
+paddle_a.penup()   # prevents turtle from drawing lines when moving
+paddle_a.goto(-350, 0)  # location of the Left side paddle
+
+
+# --- Paddle B ---
+paddle_b = turtle.Turtle()
+paddle_b.speed(0)
+paddle_b.shape("square")
+paddle_b.color("white")
+paddle_b.shapesize(stretch_wid=5, stretch_len=1)
+paddle_b.penup()
+paddle_b.goto(350, 0)  # location of the Right side paddle
+
+
+# --- Ball ---
+ball = turtle.Turtle()
+ball.speed(0)
+ball.shape("circle")   # shape of the ball, chose circle but could be old school square
+ball.color("white")
+ball.penup()
+ball.goto(0, 0)  # starts the center of the ball in the center of the game board
+ball.dx = 0.1   # speed of the ball left, right
+ball.dy = 0.1   # speed of the ball up, down    keep them the same, speed will change depending on the computer
+
+
+# --- Pen (Score Display) ---
+pen = turtle.Turtle()
+pen.speed(0)
+pen.color("white")
+pen.penup()
+pen.hideturtle()   # hide because we don't need to see it drawing unlike the ball and paddles
+pen.goto(0, 260)   # location of the score board
+pen.write("Player A: 0    Player B: 0",
+          align="center", font=("Courier", 24, "normal"))  # this shows the players scores centered on the screen
+
+
+# --- Sound Functions ---
+def bounce_sound():  # Plays the bounce.wav sound when the ball hits the top, bottom or paddles
+    try:   # using try / except so the game wont crash if the sound file is missing
+        winsound.PlaySound("bounce.wav", winsound.SND_ASYNC)   # the SND_ASYNC will play the sound with no delay
+    except:
+        pass  # If sound fails, ignore
+
+
+def goal_sound():
+    try:
+        winsound.PlaySound("goal.wav", winsound.SND_ASYNC)
+    except:
+        pass  # If sound fails, ignore
+
+
+# --- Paddle Movement Functions ---
+def paddle_a_up():
+    if not game_running:   # checks to see if the game is running
+        return   # will return True or False
+    y = paddle_a.ycor()   # gets the current location of paddle_a
+    if y < 250:           # if it's less than 250
+        paddle_a.sety(y + 20)  # add 20  moves it up 20
+
+
+def paddle_a_down():
+    if not game_running:
+        return
+    y = paddle_a.ycor()   # current location of paddle_a
+    if y > -250:          # if it's more than -250
+        paddle_a.sety(y - 20)  # move it down 20
+
+
+def paddle_b_up():
+    if not game_running:
+        return
+    y = paddle_b.ycor()
+    if y < 250:
+        paddle_b.sety(y + 20)
+
+
+def paddle_b_down():
+    if not game_running:
+        return
+    y = paddle_b.ycor()
+    if y > -250:
+        paddle_b.sety(y - 20)
+
+
+# --- Start / Stop Controls Functions ---
+def start_game():
+    global game_running
+    if in_final_screen:
+        return
+    menu.clear()  # remove menu if still visible
+    countdown()   # starts the countdown function 3. 2. 1. Go
+    game_running = True   # game is running
+
+
+def stop_game():
+    final_score_screen()   # shows the final score screen
+
+
+# --- Final Score Screen Function ---
+def final_score_screen():
+    global in_final_screen, final_screen, game_running   # the globals from the beginning
+
+
+    in_final_screen = True   # show the final screen
+    game_running = False     # game stopped
+
+
+    # stop the ball instantly
+    ball.dx = 0
+    ball.dy = 0
+
+
+    final_screen = turtle.Turtle()
+    final_screen.speed(0)
+    final_screen.color("white")
+    final_screen.penup()
+    final_screen.hideturtle()
+
+
+    # Determine winner
+    if score_a > score_b:          # if a scored more that b
+        winner = "Player A Wins!"  
+    elif score_b > score_a:        # if b scored more that a
+        winner = "Player B Wins!"
+    else:
+        winner = "It's a Tie!"     # tie
+
+
+    # Draw final screen
+    final_screen.goto(0, 80)
+    final_screen.write("GAME OVER", align="center", font=("Courier", 48, "bold"))
+
+
+    final_screen.goto(0, 20)
+    final_screen.write(winner, align="center", font=("Courier", 32, "normal"))
+
+
+    final_screen.goto(0, -40)
+    final_screen.write(f"Final Score: {score_a} - {score_b}",
+                       align="center", font=("Courier", 28, "normal"))   # use score_a and score_b variable values
+
+
+    final_screen.goto(0, -120)
+    final_screen.write("Press R to Play Again", align="center",
+                       font=("Courier", 20, "normal"))          # r to play again
+
+
+    final_screen.goto(0, -160)
+    final_screen.write("Press Q to Exit", align="center",
+                       font=("Courier", 20, "normal"))          # q to quit program
+
+
+# --- Play Again Function ---
+def play_again():
+    global score_a, score_b, in_final_screen, final_screen, game_running   # reset variables
+
+
+    if not in_final_screen:   # check if in the final screen, True or False
+        return
+
+
+    final_screen.clear()    # clear screen
+    in_final_screen = False   # check again
+
+
+    # Reset score variables to zero
+    score_a = 0
+    score_b = 0
+
+
+    # Reset score display to zeros
+    pen.clear()
+    pen.write("Player A: 0    Player B: 0",
+              align="center", font=("Courier", 24, "normal"))
+
+
+    # Reset ball to the center of the screen
+    ball.goto(0, 0)
+    ball.dx = 0.1
+    ball.dy = 0.1
+
+
+    countdown()   # start the count down again
+    game_running = True   # game on
+
+
+# --- Quit Function ---
+def quit_game():   # if q is pressed, quit game
+    if in_final_screen:
+        wn.bye()
+
+
+# --- Keyboard Bindings ---
+wn.listen()
+
+
+# Gameplay controls
+wn.onkeypress(paddle_a_up, "w")
+wn.onkeypress(paddle_a_down, "s")
+wn.onkeypress(paddle_b_up, "Up")
+wn.onkeypress(paddle_b_down, "Down")
+
+
+# Start game from menu
+wn.onkeypress(start_game, "space")
+
+
+# End game and show final screen
+wn.onkeypress(stop_game, "x")
+
+
+# Final screen controls
+wn.onkeypress(play_again, "r")
+wn.onkeypress(quit_game, "q")
+
+
+# --- Main Game Loop ---
+while True:
+    wn.update()  #every time the loop runs it updates the window
+
+
+    if not game_running:
+        continue  # freeze everything except screen updates
+
+
+    # Move the ball
+    ball.setx(ball.xcor() + ball.dx)  # starts at 0,0 this will move it left/right 0.1 for each loop
+    ball.sety(ball.ycor() + ball.dy)  # moves it up/down 0.1 for each loop
+
+
+    # Border checking
+    # We set the screen to 800 wide x 600 high and the ball is 20 x 20
+    # the middle of the ball starts as 0,0 so 300 is half of the 600 height - i'm use 290 so we can still see the full ball as it hits the top
+
+
+    # Top and bottom borders
+    if ball.ycor() > 290:  # if the currnet location of the ball is greater than 290
+        ball.sety(290)     # set the ball to 290
+        ball.dy *= -1      # reverses the direction of the ball
+        bounce_sound()     # plays the bounce sound
+
+
+    if ball.ycor() < -290:  # if the currnt location is less than 290
+        ball.sety(-290)     # set it to -290
+        ball.dy *= -1       # reverses the direction of the ball
+        bounce_sound()      # plays the bounce sound
+
+
+    # Player A scores (Left side of screen)
+    if not in_final_screen and ball.xcor() > 390:   # check if on the final screen and the ball is passed the paddle and off the right of the screen
+        ball.goto(0, 0)    # put the ball back to center
+        ball.dx *= -1   # the ball start again in opposite direction
+        score_a += 1    # add one goal for player a and store in in variable score_a
+        pen.clear()     #clear the screen
+        pen.write(f"Player A: {score_a}    Player B: {score_b}",
+                  align="center", font=("Courier", 24, "normal"))   # shows the scores using the udpated variables for score_a and score_b
+        goal_sound()   # play the goal sound
+        game_running = False   # this will pause the game after each goal, Space will start game again
+        countdown()   # calls the countdown function
+        game_running = True   # game on again
+
+
+    # Player B scores (Right side of screen)
+    if not in_final_screen and ball.xcor() < -390:   # check if on the final screen and the ball is passed the paddle and off the left of the screen
+        ball.goto(0, 0)
+        ball.dx *= -1
+        score_b += 1
+        pen.clear()
+        pen.write(f"Player A: {score_a}    Player B: {score_b}",
+                  align="center", font=("Courier", 24, "normal"))
+        goal_sound()
+        game_running = False
+        countdown()
+        game_running = True
+
+
+    # Paddle B collision
+    # checking if the ball and paddle collide, using the x, y of the ball and the x, y of the paddle
+    if (340 < ball.xcor() < 350) and \\
+       (paddle_b.ycor() - 50 < ball.ycor() < paddle_b.ycor() + 50):  
+        ball.setx(340)
+        ball.dx *= -1  # paddle hit it so bounce the ball opposite direction
+        bounce_sound()   # play the bounce sound
+
+
+    # Paddle A collision
+    if (-350 < ball.xcor() < -340) and \\
+       (paddle_a.ycor() - 50 < ball.ycor() < paddle_a.ycor() + 50):
+        ball.setx(-340)
+        ball.dx *= -1
+        bounce_sound()
+
+` },
+    { name: "Daniel", game: "Colour Guessing Game", code: `import random
+
+
+# List of available colors
+colors = ["red", "blue", "green", "yellow", "orange",
+          "purple", "cyan", "brown", "white", "black"]
+
+
+# Score variables
+user_score = 0
+ai_score = 0
+
+
+# Function to calculate score based on attempts
+def calculate_score(attempts):
+    if attempts == 1:
+        return 10
+    elif attempts == 2:
+        return 7
+    elif attempts == 3:
+        return 5
+    elif attempts <= 5:
+        return 3
+    else:
+        return 1
+
+
+# Function to display color choices
+def show_colors():
+    print("\\nAvailable colors:")
+    for color in colors:
+        print("-", color)
+
+
+# Function for user guessing AI's color
+def user_guesses():
+    global user_score
+    secret_color = random.choice(colors)
+    attempts = 0
+
+
+    print("\\nI have chosen a color. Try to guess it!")
+    show_colors()
+
+
+    while True:
+        guess = input("Enter your guess: ").lower()
+        attempts += 1
+
+
+        if guess not in colors:
+            print("Invalid color. Try again.")
+            continue
+
+
+        if guess == secret_color:
+            points = calculate_score(attempts)
+            user_score += points
+            print(f"Correct! Attempts: {attempts} | Points earned: {points}")
+            break
+        else:
+            print("Wrong guess. Try again!")
+
+
+# Function for AI guessing user's color
+def ai_guesses():
+    global ai_score
+    remaining_colors = colors.copy()
+    attempts = 0
+
+
+    print("\\nThink of a color and I'll guess it!")
+    show_colors()
+
+
+    while remaining_colors:
+        guess = random.choice(remaining_colors)
+        attempts += 1
+
+
+        print(f"My guess is: {guess}")
+        response = input("Is it correct? (yes/no): ").lower()
+
+
+        if response == "yes":
+            points = calculate_score(attempts)
+            ai_score += points
+            print(f"I got it in {attempts} attempts! Points earned: {points}")
+            break
+        elif response == "no":
+            remaining_colors.remove(guess)
+        else:
+            print("Please answer with 'yes' or 'no'.")
+
+
+# Function to display scores
+def show_scores():
+    print("\\n=== SCOREBOARD ===")
+    print(f"You: {user_score} points")
+    print(f"AI: {ai_score} points")
+
+
+# Main program loop
+def main():
+    print("=== Color Guessing Game ===")
+
+
+    while True:
+        print("\\nChoose a mode:")
+        print("1. You guess the AI's color")
+        print("2. AI guesses your color")
+        print("3. Show scores")
+        print("4. Exit")
+
+
+        choice = input("Enter choice: ")
+
+
+        if choice == "1":
+            user_guesses()
+        elif choice == "2":
+            ai_guesses()
+        elif choice == "3":
+            show_scores()
+        elif choice == "4":
+            print("Final Scores:")
+            show_scores()
+            print("Goodbye")
+            break
+        else:
+            print("Try again.")
+
+
+# Run the game
+if __name__ == "__main__":
+    main()` },
+    { name: "Eliza", game: "Cryptographic Vault", code: `import hashlib
+import json
+import os
+ 
+VAULT_FILE  = "vault.json"   # file where encrypted messages are saved
+MAX_TRIES   = 3              # max wrong password attempts before lockout
+ 
+ 
+def hash_password(password):
+    """Convert a plain-text password into a SHA-256 hash string."""
+    return hashlib.sha256(password.encode()).hexdigest()
+ 
+ 
+def vigenere_encrypt(message, key):
+    """Encrypt a message using the Vigenere cipher."""
+    encrypted = ""          # starts empty, builds up character by character
+    key       = key.upper()
+    key_index = 0           # tracks position in the repeating key
+ 
+    for character in message:
+        if character.isalpha():
+            base  = ord("A") if character.isupper() else ord("a")
+            shift = ord(key[key_index % len(key)]) - ord("A")
+            encrypted_char = chr((ord(character) - base + shift) % 26 + base)
+            encrypted  += encrypted_char
+            key_index  += 1
+        else:
+            encrypted += character   # spaces/punctuation kept unchanged
+ 
+    return encrypted
+ 
+ 
+def vigenere_decrypt(ciphertext, key):
+    """Reverse the Vigenere encryption to recover the original message."""
+    decrypted = ""
+    key       = key.upper()
+    key_index = 0
+ 
+    for character in ciphertext:
+        if character.isalpha():
+            base  = ord("A") if character.isupper() else ord("a")
+            shift = ord(key[key_index % len(key)]) - ord("A")
+            decrypted_char = chr((ord(character) - base - shift) % 26 + base)
+            decrypted  += decrypted_char
+            key_index  += 1
+        else:
+            decrypted += character
+ 
+    return decrypted
+ 
+ 
+def load_vault():
+    """Read vault.json from disk. If it does not exist, return a blank vault."""
+    if os.path.exists(VAULT_FILE):
+        with open(VAULT_FILE, "r") as file:
+            return json.load(file)
+    return {"master_hash": None, "messages": {}}
+ 
+ 
+def save_vault(vault):
+    """Write the vault dictionary to vault.json."""
+    with open(VAULT_FILE, "w") as file:
+        json.dump(vault, file, indent=4)
+ 
+ 
+def setup_master_password(vault):
+    """First-run only: create and hash the master password."""
+    print("Welcome! Create your master password.")
+    while True:
+        password = input("Create master password: ").strip()
+        confirm  = input("Confirm master password: ").strip()
+        if password == confirm and len(password) >= 4:
+            vault["master_hash"] = hash_password(password)
+            save_vault(vault)
+            print("Master password set!")
+            return
+        print("Passwords did not match or too short. Try again.")
+ 
+ 
+def authenticate(vault):
+    """Ask for master password up to MAX_TRIES times. Returns True/False."""
+    tries = 0
+    while tries < MAX_TRIES:
+        password = input(f"Enter master password (attempt {tries+1}/{MAX_TRIES}): ").strip()
+        if hash_password(password) == vault["master_hash"]:
+            print("Access granted.")
+            return True
+        tries += 1
+        remaining = MAX_TRIES - tries
+        if remaining > 0:
+            print(f"Wrong password. {remaining} attempt(s) left.")
+    print("Too many failed attempts. Vault locked.")
+    return False
+ 
+ 
+def add_message(vault):
+    """Store a new encrypted message in the vault."""
+    label   = input("Label (e.g. diary entry 1): ").strip()
+    message = input("Message to encrypt: ").strip()
+    key     = input("Cipher key (any word): ").strip()
+    if not label or not message or not key:
+        print("All fields are required.")
+        return
+    ciphertext = vigenere_encrypt(message, key)
+    vault["messages"][label] = ciphertext
+    save_vault(vault)
+    print(f"Encrypted! Ciphertext: {ciphertext}")
+ 
+ 
+def view_messages(vault):
+    """List all message labels stored in the vault."""
+    if not vault["messages"]:
+        print("(vault is empty)")
+        return
+    for i, label in enumerate(vault["messages"], start=1):
+        print(f"{i}. {label}")
+ 
+ 
+def decrypt_message(vault):
+    """Retrieve and decrypt a stored message using the cipher key."""
+    view_messages(vault)
+    if not vault["messages"]:
+        return
+    label = input("Enter label to decrypt: ").strip()
+    if label not in vault["messages"]:
+        print("Label not found.")
+        return
+    key       = input("Enter cipher key: ").strip()
+    ciphertext = vault["messages"][label]
+    plaintext  = vigenere_decrypt(ciphertext, key)
+    print(f"Decrypted message: {plaintext}")
+ 
+ 
+def delete_message(vault):
+    """Remove a message from the vault permanently."""
+    view_messages(vault)
+    if not vault["messages"]:
+        return
+    label = input("Enter label to delete: ").strip()
+    if label in vault["messages"]:
+        del vault["messages"][label]
+        save_vault(vault)
+        print(f"{label} deleted.")
+    else:
+        print("Label not found.")
+ 
+ 
+def main():
+    print("CRYPTOGRAPHIC VAULT")
+    vault = load_vault()
+ 
+    if vault["master_hash"] is None:
+        setup_master_password(vault)
+ 
+    if not authenticate(vault):
+        return
+ 
+    running = True   # controls whether the menu keeps showing
+    while running:
+        print("1. Add encrypted message")
+        print("2. View message labels")
+        print("3. Decrypt a message")
+        print("4. Delete a message")
+        print("5. Exit")
+        choice = input("Choose an option (1-5): ").strip()
+ 
+        if   choice == "1": add_message(vault)
+        elif choice == "2": view_messages(vault)
+        elif choice == "3": decrypt_message(vault)
+        elif choice == "4": delete_message(vault)
+        elif choice == "5":
+            print("Vault locked. Goodbye!")
+            running = False
+        else:
+            print("Invalid option. Enter 1-5.")
+ 
+ 
+if __name__ == "__main__":
+    main()
+` },
+    { name: "Elven", game: "Blackjack", code: `import random
+import time  # ⏱️ NEW: for delays
+
+
+
+
+# कार्ड values (simplified)
+def deal_card():
+    cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]  # Ace = 11
+    return random.choice(cards)
+
+
+
+
+def calculate_total(hand):
+    total = sum(hand)
+   
+    # Handle Ace (11 -> 1 if bust)
+    while total > 21 and 11 in hand:
+        hand[hand.index(11)] = 1
+        total = sum(hand)
+       
+    return total
+
+
+
+
+# 🎬 Cool dealer animation
+def dealer_draw_animation():
+    print("\\nDealer is drawing", end="", flush=True)
+    for _ in range(3):
+        time.sleep(0.5)
+        print(".", end="", flush=True)
+    print()  # new line
+
+
+
+
+while True:  # 🔁 Game loop for replay
+
+
+    # --- Step 1: Deal cards ---
+    player_hand = [deal_card(), deal_card()]
+    dealer_hand = [deal_card(), deal_card()]
+
+
+    player_total = calculate_total(player_hand)
+
+
+    print(f"\\nYour cards: {player_hand}, Total: {player_total}")
+    print(f"Dealer shows: {dealer_hand[0]}")
+
+
+    # Check Blackjack
+    if player_total == 21:
+        print("Blackjack! You win!")
+    else:
+        # --- Step 2: Player turn ---
+        while player_total < 21:
+            choice = input("Hit or Stand? ").lower()
+           
+            if choice == "hit":
+                print("\\nDrawing a card...")
+                time.sleep(1)  # ⏱️ delay for player too
+               
+                player_hand.append(deal_card())
+                player_total = calculate_total(player_hand)
+                print(f"Your cards: {player_hand}, Total: {player_total}")
+               
+                if player_total > 21:
+                    print("You busted! You lose.")
+                    break
+                   
+            elif choice == "stand":
+                break
+            else:
+                print("Invalid input.")
+
+
+        # --- Step 3: Dealer turn ---
+        if player_total <= 21:
+            dealer_total = calculate_total(dealer_hand)
+
+
+            print("\\nDealer reveals hidden card...")
+            time.sleep(1.5)
+            print(f"Dealer's hand: {dealer_hand}, Total: {dealer_total}")
+           
+            while dealer_total < 17:
+                dealer_draw_animation()  # 🎬 animation
+                time.sleep(1)  # extra pause
+
+
+                new_card = deal_card()
+                dealer_hand.append(new_card)
+
+
+                print(f"Dealer drew: {new_card}")
+                time.sleep(0.7)
+
+
+                dealer_total = calculate_total(dealer_hand)
+                print(f"Dealer's hand: {dealer_hand}, Total: {dealer_total}")
+           
+            # Final result
+            print("\\n--- Final Results ---")
+            time.sleep(1)
+            print(f"Your total: {player_total}")
+            print(f"Dealer total: {dealer_total}")
+           
+            time.sleep(1)
+
+
+            if dealer_total > 21:
+                print("Dealer busted! You win!")
+            elif player_total > dealer_total:
+                print("You win!")
+            elif player_total < dealer_total:
+                print("You lose!")
+            else:
+                print("It's a tie!")
+
+
+    # 🔁 Replay prompt
+    replay = input("\\nType 'replay' to play again, or anything else to quit: ").lower()
+    if replay != "replay":
+        print("Thanks for playing!")
+        break` },
+    { name: "Hiba", game: "Word Scrabble", code: `import random
+import time
+import sys
+
+# 4 Variables
+words_list = [
+    'apple', 'banana', 'grape', 'orange', 'strawberry', 'blueberry', 'cherry',
+    'pear', 'peach', 'melon', 'mango', 'watermelon', 'kiwi', 'lemon', 'apricot',
+    'plum', 'pineapple', 'papaya', 'coconut', 'carrot', 'potato', 'onion',
+    'tomato', 'cucumber', 'lettuce', 'broccoli', 'spinach', 'pepper', 'garlic',
+    'ginger', 'celery', 'peas', 'beans', 'corn', 'chicken', 'beef', 'pork',
+    'fish', 'lamb', 'cheese', 'milk', 'butter', 'bread', 'sandwich', 'cookie',
+    'cake', 'pie', 'pasta', 'noodles', 'rice', 'soup', 'salad', 'steak'
+]
+
+used_words = []  # This will track words that have already been used
+scrambled_word = ''
+player_score = 0
+time_limit = 30  # in seconds
+
+# Function to scramble the word
+def scramble_word(word):
+    global scrambled_word
+    scrambled_word = ''.join(random.sample(word, len(word)))
+
+    # Ensure the scrambled word is different from the original word
+    while scrambled_word == word:
+        scrambled_word = ''.join(random.sample(word, len(word)))
+
+# Function to check if the player guessed correctly
+def check_guess(guess, word):
+    global player_score
+    if guess == word:
+        player_score += 5
+        print("Correct! You've earned 5 points.\\n")
+
+# Function to start the game and set timer
+def start_game():
+    global player_score
+    start_time = time.time()
+
+    # While the time hasn't run out
+    while True:
+        current_time = time.time() - start_time
+        remaining_time = time_limit - int(current_time)
+
+        # Break the loop if time is up
+        if remaining_time <= 0:
+            print(f"Time's up! You lose. Final Score: {player_score}")
+            break
+
+        # Choose a word that hasn't been used yet
+        available_words = [word for word in words_list if word not in used_words]
+
+        # If all words have been used, end the game
+        if not available_words:
+            print(f"All words have been used. Final Score: {player_score}")
+            break
+
+        word = random.choice(available_words)
+        used_words.append(word)  # Add the word to the used list
+        scramble_word(word)
+
+        # Display timer and score
+        sys.stdout.write(f"\\rTime remaining: {remaining_time} seconds | Score: {player_score}")
+        sys.stdout.flush()
+
+        print(f"\\nScrambled word: {scrambled_word}")
+
+        # Get the player's guess
+        guess = input("Unscramble the word: ")
+
+        check_guess(guess, word)
+
+        # Check if the player has reached the score goal (UPDATED TO 25)
+        if player_score >= 25:
+            print(f"\\nCongratulations! You've won with {player_score} points.")
+            break
+
+# Main function to run the game
+if __name__ == "__main__":
+    print("Welcome to the Word Scrabble Game!")
+    start_game()
+` },
+    { name: "Izzy", game: "Riddle Game", code: `command = input("Type 'riddle' to start the game: ").lower()
+
+
+
+
+if command == "riddle":
+    print("I follow you all the time and copy your every move, but you can’t touch me or catch me. What am I?")
+   
+    hints = [
+        "I disappear when there is no light.",
+        "I am an important part of 'still life' art."
+    ]
+   
+    hint_count = 0
+   
+    while True:
+        answer = input("Type your answer or 'hint' for a hint: ").lower()
+       
+        if answer == "hint":
+            if hint_count < len(hints):
+                print("Hint:", hints[hint_count])
+                hint_count += 1
+            else:
+                print("No more hints available!")
+       
+        elif answer == "shadow":
+            print("Good job, you got it right!")
+            break
+       
+        else:
+            print("Sorry! You got it wrong. Try again!")
+` },
+    { name: "Jacob", game: "Slot Machine", code: `import random
+import time
+
+# Symbols and their payouts
+SYMBOLS = ["🍒", "🍋", "🔔", "⭐", "7️⃣"]
+PAYOUTS = {
+    "🍒": 2,
+    "🍋": 3,
+    "🔔": 5,
+    "⭐": 10,
+    "7️⃣": 20
+}
+
+def spin_reels():
+    return [random.choice(SYMBOLS) for _ in range(3)]
+
+def display_reels(reels):
+    print("\\nSpinning...")
+    time.sleep(0.5)
+    print(" | ".join(reels))
+    print()
+
+def calculate_winnings(reels, bet):
+    if reels[0] == reels[1] == reels[2]:
+        symbol = reels[0]
+        return bet * PAYOUTS[symbol], f"🎉 JACKPOT! 3 {symbol}'s!"
+    elif reels[0] == reels[1] or reels[1] == reels[2] or reels[0] == reels[2]:
+        return bet * 2, "✨ Nice! You got 2 matching symbols!"
+    else:
+        return 0, "😢 No match."
+
+def get_bet(balance):
+    while True:
+        try:
+            bet = int(input(f"Enter your bet (Balance: \${balance}): "))
+            if bet <= 0:
+                print("Bet must be greater than 0.")
+            elif bet > balance:
+                print("You don't have enough money.")
+            else:
+                return bet
+        except ValueError:
+            print("Please enter a valid number.")
+
+def main():
+    balance = 100
+    highest_balance = balance
+
+    print("🎰 Welcome to Python Slots! 🎰")
+
+    while balance > 0:
+        bet = get_bet(balance)
+        reels = spin_reels()
+        display_reels(reels)
+
+        winnings, message = calculate_winnings(reels, bet)
+        print(message)
+
+        balance += winnings - bet
+        highest_balance = max(highest_balance, balance)
+
+        print(f"Balance: \${balance}")
+
+        if balance <= 0:
+            print("💀 You're out of money! Game over.")
+            break
+
+        choice = input("Press Enter to play again or type 'q' to quit: ").lower()
+        if choice == 'q':
+            break
+
+    print(f"\\nThanks for playing! Highest balance: \${highest_balance}")
+
+if __name__ == "__main__":
+    main()
+` },
+    { name: "Kelly", game: "Reaction Time Game", code: `import time
+import random
+
+
+print("Reaction Time Game")
+name = input("What is your name? ")
+print("Hello", name, "! Let's start.")
+
+
+round = 1
+rounds = 5
+score = 0
+best_time = None
+
+
+while round <= rounds:
+   print("Round", round)
+   print("WAIT...")
+
+
+   delay = random.randint(2, 5)
+   time.sleep(delay)
+
+
+   print("GO!")
+   start_time = time.time()
+   input()
+   end_time = time.time()
+
+
+   reaction_time = float(end_time - start_time)
+   print("Your reaction time:", reaction_time, "seconds")
+
+
+   score = score + reaction_time
+
+
+   if best_time is None or reaction_time < best_time:
+       best_time = reaction_time
+
+
+   round = round + 1
+
+
+average_time = score / rounds
+print("Best time:", best_time)
+print("Average time:", average_time)
+
+
+if average_time < 0.3:
+   print("Amazing reflexes!")
+elif average_time < 0.6:
+   print("Good job!")
+else:
+   print("Keep practicing!")` },
+    { name: "Kenzi", game: "Guess the Number", code: `import random
+
+
+secret_number = random.randint(1, 10)
+
+
+attempts = 0
+
+
+def check_guess(guess):
+    if guess == secret_number:
+        return "correct"
+    elif guess < secret_number:
+        return "low"
+    else:
+        return "high"
+
+
+while True:
+    guess = int(input("Guess a number between 1 and 10: "))
+    attempts += 1
+
+
+    result = check_guess(guess)
+
+
+    if result == "correct":
+        print("You got it!")
+        print("Attempts:", attempts)
+        break
+    elif result == "low":
+        print("Too low!")
+    else:
+        print("Too high!")` },
+    { name: "Korede", game: "Wordle", code: `import random
+
+# Color Helper Codes
+GREEN = "\\033[42;30m" # Green background, black text
+YELLOW = "\\033[43;30m" # Yellow background, black text
+GRAY = "\\033[47;30m"   # Gray background, black text
+RESET = "\\033[0m"      # Resets color to default
+
+def play_wordle():
+    words = ["APPLE", "BEACH", "BRAIN", "CLOUD", "SMILE", "YOUTH"]
+    secret = random.choice(words)
+    attempts = 6
+
+    print("--- PYTHON COLORED WORDLE ---")
+    
+    while attempts > 0:
+        guess = input(f"\\n({attempts} tries left) Enter a 5-letter word: ").upper()
+
+        if len(guess) != 5:
+            print("Please enter exactly 5 letters!")
+            continue
+
+        display_output = ""
+        for i in range(5):
+            if guess[i] == secret[i]:
+                # Letter is correct and in the right spot
+                display_output += f" {GREEN} {guess[i]} {RESET}"
+            elif guess[i] in secret:
+                # Letter exists but in the wrong spot
+                display_output += f" {YELLOW} {guess[i]} {RESET}"
+            else:
+                # Letter is not in the word
+                display_output += f" {GRAY} {guess[i]} {RESET}"
+        
+        print(display_output)
+
+        if guess == secret:
+            print("\\nVICTORY! You guessed it!")
+            break
+        
+        attempts -= 1
+
+    if attempts == 0:
+        print(f"\\nGAME OVER! The word was {secret}.")
+` },
+    { name: "Murtaza", game: "Odd One Out", code: `import pygame
+import random
+import sys
+import math
+
+pygame.init()
+
+SCREEN_W, SCREEN_H = 600, 700
+screen = pygame.display.set_mode((SCREEN_W, SCREEN_H))
+pygame.display.set_caption("Odd One Out Game")
+
+WHITE  = (255, 255, 255)
+BLACK  = (0,   0,   0)
+GRAY   = (200, 200, 200)
+GREEN  = (0,   180, 0)
+RED    = (200, 0,   0)
+
+FONT_LARGE = pygame.font.SysFont(None, 52)
+FONT_MED   = pygame.font.SysFont(None, 36)
+FONT_SMALL = pygame.font.SysFont(None, 28)
+
+TOTAL_ROUNDS   = 8
+IMG_SIZE       = 200
+GRID_X         = [50, 310]
+GRID_Y         = [120, 370]
+
+
+def draw_sun(surf, rays):
+    cx, cy, r = 100, 100, 35
+    pygame.draw.circle(surf, (255, 210, 0), (cx, cy), r)
+    for i in range(rays):
+        angle = math.radians(i * 360 / rays)
+        x1 = int(cx + math.cos(angle) * (r + 5))
+        y1 = int(cy + math.sin(angle) * (r + 5))
+        x2 = int(cx + math.cos(angle) * (r + 22))
+        y2 = int(cy + math.sin(angle) * (r + 22))
+        pygame.draw.line(surf, (255, 180, 0), (x1, y1), (x2, y2), 4)
+
+
+def draw_house(surf, windows):
+    pygame.draw.rect(surf, (180, 100, 60), (40, 90, 120, 80))
+    pts = [(40, 90), (100, 30), (160, 90)]
+    pygame.draw.polygon(surf, (200, 50, 50), pts)
+    pygame.draw.rect(surf, (100, 60, 20), (82, 130, 36, 40))
+    gap = 120 // (windows + 1)
+    for i in range(windows):
+        wx = 40 + gap * (i + 1) - 12
+        pygame.draw.rect(surf, (150, 220, 255), (wx, 100, 24, 22))
+        pygame.draw.rect(surf, BLACK, (wx, 100, 24, 22), 2)
+
+
+def draw_tree(surf, style):
+    pygame.draw.rect(surf, (120, 70, 20), (88, 120, 24, 55))
+    if style == "round":
+        pygame.draw.circle(surf, (40, 160, 40), (100, 85), 50)
+        pygame.draw.circle(surf, (30, 130, 30), (75, 100), 32)
+        pygame.draw.circle(surf, (30, 130, 30), (125, 100), 32)
+    else:
+        pts = [(100, 25), (50, 120), (150, 120)]
+        pygame.draw.polygon(surf, (40, 160, 40), pts)
+        pts2 = [(100, 55), (45, 140), (155, 140)]
+        pygame.draw.polygon(surf, (30, 130, 30), pts2)
+
+
+def draw_star(surf, points):
+    cx, cy = 100, 100
+    outer, inner = 60, 28
+    pts = []
+    for i in range(points * 2):
+        angle = math.radians(i * 180 / points - 90)
+        r = outer if i % 2 == 0 else inner
+        pts.append((cx + math.cos(angle) * r, cy + math.sin(angle) * r))
+    pygame.draw.polygon(surf, (255, 200, 0), pts)
+    pygame.draw.polygon(surf, (200, 140, 0), pts, 2)
+
+
+def draw_face(surf, mouth):
+    pygame.draw.circle(surf, (255, 220, 150), (100, 100), 60)
+    pygame.draw.circle(surf, BLACK, (78, 85), 8)
+    pygame.draw.circle(surf, BLACK, (122, 85), 8)
+    pygame.draw.circle(surf, WHITE, (81, 82), 3)
+    pygame.draw.circle(surf, WHITE, (125, 82), 3)
+    if mouth == "smile":
+        pygame.draw.arc(surf, BLACK, (70, 105, 60, 35), math.pi, 2 * math.pi, 4)
+    elif mouth == "frown":
+        pygame.draw.arc(surf, BLACK, (70, 120, 60, 35), 0, math.pi, 4)
+    else:
+        pygame.draw.line(surf, BLACK, (75, 128), (125, 128), 4)
+
+
+def draw_flower(surf, petals):
+    cx, cy = 100, 105
+    for i in range(petals):
+        angle = math.radians(i * 360 / petals)
+        px = int(cx + math.cos(angle) * 38)
+        py = int(cy + math.sin(angle) * 38)
+        pygame.draw.circle(surf, (255, 100, 150), (px, py), 22)
+    pygame.draw.circle(surf, (255, 220, 0), (cx, cy), 24)
+    pygame.draw.rect(surf, (60, 160, 60), (94, 140, 12, 50))
+
+
+def draw_cloud(surf, bumps):
+    pygame.draw.rect(surf, (135, 206, 250), surf.get_rect())
+    base_y = 120
+    pygame.draw.rect(surf, WHITE, (25, base_y, 150, 50), border_radius=20)
+    if bumps == 2:
+        positions = [(60, base_y), (120, base_y - 5)]
+    elif bumps == 3:
+        positions = [(55, base_y), (95, base_y - 10), (135, base_y)]
+    else:
+        positions = [(50, base_y), (80, base_y - 12), (110, base_y - 12), (140, base_y)]
+    for (bx, by) in positions:
+        pygame.draw.circle(surf, WHITE, (bx, by), 32)
+
+
+def make_image(draw_fn, bg=(240, 240, 240)):
+    surf = pygame.Surface((IMG_SIZE, IMG_SIZE))
+    surf.fill(bg)
+    draw_fn(surf)
+    pygame.draw.rect(surf, (180, 180, 180), surf.get_rect(), 3)
+    return surf
+
+
+ROUND_TYPES = [
+    lambda: (make_image(lambda s: draw_sun(s, 6)),        make_image(lambda s: draw_sun(s, 8))),
+    lambda: (make_image(lambda s: draw_house(s, 2)),      make_image(lambda s: draw_house(s, 3))),
+    lambda: (make_image(lambda s: draw_tree(s, "round")), make_image(lambda s: draw_tree(s, "triangle"))),
+    lambda: (make_image(lambda s: draw_star(s, 5)),       make_image(lambda s: draw_star(s, 6))),
+    lambda: (make_image(lambda s: draw_face(s, "smile")), make_image(lambda s: draw_face(s, "frown"))),
+    lambda: (make_image(lambda s: draw_face(s, "smile")), make_image(lambda s: draw_face(s, "straight"))),
+    lambda: (make_image(lambda s: draw_flower(s, 5)),     make_image(lambda s: draw_flower(s, 6))),
+    lambda: (make_image(lambda s: draw_cloud(s, 3), bg=(135, 206, 250)),
+             make_image(lambda s: draw_cloud(s, 2), bg=(135, 206, 250))),
+]
+
+
+def make_round(used_types):
+    available = [i for i in range(len(ROUND_TYPES)) if i not in used_types]
+    if not available:
+        available = list(range(len(ROUND_TYPES)))
+        used_types.clear()
+    choice = random.choice(available)
+    used_types.add(choice)
+    common_img, odd_img = ROUND_TYPES[choice]()
+    odd_index = random.randint(0, 3)
+    images = [common_img if i != odd_index else odd_img for i in range(4)]
+    return images, odd_index
+
+
+def get_cell_rect(index):
+    col = index % 2
+    row = index // 2
+    return pygame.Rect(GRID_X[col], GRID_Y[row], IMG_SIZE, IMG_SIZE)
+
+
+def draw_text_centered(text, font, color, y):
+    surf = font.render(text, True, color)
+    screen.blit(surf, ((SCREEN_W - surf.get_width()) // 2, y))
+
+
+def draw_progress_bar(current_round, total):
+    bar_w, bar_h = 500, 18
+    x = (SCREEN_W - bar_w) // 2
+    y = 90
+    ratio = (current_round - 1) / total
+    pygame.draw.rect(screen, GRAY,  (x, y, bar_w, bar_h))
+    pygame.draw.rect(screen, GREEN, (x, y, int(bar_w * ratio), bar_h))
+    pygame.draw.rect(screen, BLACK, (x, y, bar_w, bar_h), 2)
+
+
+def game_loop():
+    score = 0
+    feedback = ""
+    feedback_color = BLACK
+    feedback_timer = 0
+    used_types = set()
+
+    images, odd_index = make_round(used_types)
+    current_round = 1
+    clock = pygame.time.Clock()
+
+    while True:
+        clock.tick(30)
+        clicked = False
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                for i in range(4):
+                    if get_cell_rect(i).collidepoint(event.pos):
+                        clicked = True
+                        if i == odd_index:
+                            score += 1
+                            feedback = "Correct! +1"
+                            feedback_color = GREEN
+                        else:
+                            feedback = "Wrong!"
+                            feedback_color = RED
+                        feedback_timer = 60
+                        break
+
+        if clicked:
+            current_round += 1
+            if current_round > TOTAL_ROUNDS:
+                show_final_score(score)
+                return
+            images, odd_index = make_round(used_types)
+
+        if feedback_timer > 0:
+            feedback_timer -= 1
+        else:
+            feedback = ""
+
+        screen.fill(WHITE)
+        draw_text_centered("Odd One Out", FONT_LARGE, BLACK, 10)
+        draw_text_centered(
+            f"Round {min(current_round, TOTAL_ROUNDS)} / {TOTAL_ROUNDS}  |  Score: {score}",
+            FONT_MED, BLACK, 55
+        )
+        draw_progress_bar(min(current_round, TOTAL_ROUNDS), TOTAL_ROUNDS)
+        for i, img in enumerate(images):
+            screen.blit(img, get_cell_rect(i).topleft)
+        if feedback:
+            draw_text_centered(feedback, FONT_MED, feedback_color, SCREEN_H - 80)
+        draw_text_centered("Click the image that is different!", FONT_SMALL, GRAY, SCREEN_H - 40)
+        pygame.display.flip()
+
+
+def show_final_score(score):
+    clock = pygame.time.Clock()
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type in (pygame.KEYDOWN, pygame.MOUSEBUTTONDOWN):
+                pygame.quit()
+                sys.exit()
+        screen.fill(WHITE)
+        draw_text_centered("Game Over!", FONT_LARGE, BLACK, 200)
+        draw_text_centered(
+            f"Final Score: {score} / {TOTAL_ROUNDS}",
+            FONT_LARGE, GREEN if score > 0 else RED, 280
+        )
+        draw_text_centered("Click anywhere or press a key to quit.", FONT_SMALL, GRAY, 380)
+        pygame.display.flip()
+        clock.tick(30)
+
+
+game_loop()
+
+` },
+    { name: "Omair", game: "Card Swap", code: `import random
+
+
+
+
+def start_card_swap():
+
+
+    deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] * 4
+    random.shuffle(deck)
+
+
+
+
+    u_wins = 0
+    c_wins = 0
+
+
+
+
+    print("="*40)
+    print("         🃏 CARD SWAP: FIRST TO 3 🃏")
+    print("="*40)
+    print("1. Objective: Be the first to win 3 rounds.")
+    print("2. The Deal: You and the Computer get 3 cards each.")
+    print("3. The Mystery: Card 2 could randomly be hidden (?) initially.")
+    print("4. The Options: Choose a card (1, 2, or 3) to replace (you can get the same card value) or stay       with your cards.")
+    print("5. The Risk: Every swap has a 10%-80% Bomb Chance.")
+    print("6. The Consequence: If it explodes, your hand becomes 0!")
+    print("7. The Showdown: Higher total wins the round. If there is a tie, the Computer wins the round.")
+    print("="*40)
+
+
+
+
+    while u_wins < 3 and c_wins < 3:
+        player_hand = [deck.pop() for _ in range(3)]
+        comp_hand = [deck.pop() for _ in range(3)]
+       
+        bomb_chance = random.randint(10, 80)
+        exploded = False
+
+
+
+
+
+
+        hide_card = random.random() < 0.5
+        display_hand = list(player_hand)
+        if hide_card:
+            display_hand[1] = "?"
+
+
+
+
+        print(f"\\n--- SCORE: YOU {u_wins} | COMP {c_wins} ---")
+        print(f"Your cards: {display_hand} | ⚠️ Bomb Danger: {bomb_chance}%")
+
+
+
+
+
+
+        while True:
+            choice = input("Swap card 1, 2, or 3? (n to stay): ").lower().strip()
+            if choice in ['1', '2', '3', 'n']:
+                break
+            print("Invalid! Use 1, 2, 3, or n.")
+
+
+
+
+        if hide_card:
+            print(f"🔍 Reveal! Your hidden card was a {player_hand[1]}")
+
+
+
+
+        if choice != 'n':
+            if random.randint(1, 100) <= bomb_chance:
+                print("💥 KABOOM! The bomb triggered.")
+                exploded = True
+                player_hand = [0, 0, 0]
+            else:
+                idx = int(choice) - 1
+                player_hand[idx] = deck.pop()
+                print(f"Safe! Your new hand is: {player_hand}")
+
+
+
+
+        if not exploded:
+            print("Showdown time!")
+
+
+
+
+        p_total = sum(player_hand)
+        c_total = sum(comp_hand)
+       
+        gap = abs(p_total - c_total)
+
+
+
+
+        print(f"RESULT: YOU {p_total} vs COMP {c_total} (Gap: {gap})")
+       
+        if p_total > c_total:
+            u_wins += 1
+            print("⭐ You won this round!")
+        else:
+            c_wins += 1
+            print("🤖 Computer won this round!")
+
+
+
+
+    print(f"\\n*** MATCH END: YOU {u_wins} - COMP {c_wins} ***")
+   
+    match u_wins:
+        case 3:
+            print("🏆 CONGRATULATIONS! You won the match!")
+        case _:
+            print("💀 DEFEAT! The computer beat you.")
+
+
+
+
+    return "Match Finished"
+
+
+if __name__ == "__main__":
+    start_card_swap()` },
+    { name: "Rayan", game: "Math Challenge", code: `import random
+import time
+
+def slow_print(text):
+    for letter in text:
+        print(letter, end="", flush=True)
+        time.sleep(0.03)
+    print()
+
+def show_intro():
+    slow_print("Welcome to the Math Challenge!")
+    slow_print("Choose EASY or HARD mode.")
+    slow_print("EASY: addition and subtraction.")
+    slow_print("HARD: multiplication and division.")
+
+def choose_mode():
+    mode = input("Choose mode (easy or hard): ").lower()
+    while mode not in ["easy", "hard"]:
+        mode = input("Invalid. Choose easy or hard: ").lower()
+    return mode
+
+def make_question(mode):
+    if mode == "easy":
+        num1 = random.randint(1, 20)
+        num2 = random.randint(1, 20)
+        operator = random.choice(["+", "-"])
+        
+        if operator == "+":
+            answer = num1 + num2
+        else:
+            answer = num1 - num2
+
+    else:
+        operator = random.choice(["*", "/"])
+        
+        if operator == "*":
+            num1 = random.randint(1, 12)
+            num2 = random.randint(1, 12)
+            answer = num1 * num2
+        else:
+            num2 = random.randint(1, 12)
+            answer = random.randint(1, 12)
+            num1 = num2 * answer
+
+    return num1, num2, operator, answer
+
+def play_game(mode):
+    score = 0
+    start_time = time.time()
+
+    while True:
+        elapsed = time.time() - start_time
+        remaining = int(30 - elapsed)
+
+        if remaining <= 0:
+            break
+
+        num1, num2, operator, correct_answer = make_question(mode)
+
+        user_answer = input(f"What is {num1} {operator} {num2}? ")
+
+        if user_answer.lstrip("-").isdigit():
+            user_answer = int(user_answer)
+
+            if user_answer == correct_answer:
+                print("Correct!")
+                score += 1
+            else:
+                print("Wrong!")
+        else:
+            print("Invalid number.")
+
+        print(f"Score: {score}")
+        print(f"Time left: {remaining} seconds\\n")
+
+    return score
+
+def show_result(score):
+    print("Time is up!")
+    print(f"You got {score} correct.")
+
+    if score < 3:
+        print("Better luck next time!")
+    elif score < 6:
+        print("Good job!")
+    else:
+        print("You're a math expert!")
+
+# Run the game
+show_intro()
+mode = choose_mode()
+final_score = play_game(mode)
+show_result(final_score)` },
+    { name: "Ryan", game: "Fast Math Game", code: `import random
+import time
+import threading
+
+
+time_up = False
+
+
+# ---------------------- Countdown Timer ----------------------
+def countdown(time_limit):
+    global time_up
+    for i in range(time_limit, 0, -1):
+        if time_up:
+            return
+        print(f"\\r⏳ Time left: {i}s ", end="")
+        time.sleep(1)
+    time_up = True
+    print("\\r⏰ Time's up!        ")
+
+
+# ---------------------- Rules ----------------------
+def show_rules():
+    print("\\n📜 GAME RULES")
+    print("- You will be given math questions.")
+    print("- Type your answer and press Enter.")
+    print("- Correct → next question.")
+    print("- Wrong or time out → game ends.")
+    print("- Time DECREASES as your score increases!")
+    print("- Every 3 correct answers = -1 second.")
+    print("\\nDifficulty Settings:")
+    print("Easy: 12s → 5s minimum")
+    print("Medium: 10s → 4s minimum")
+    print("Hard: 8s → 3s minimum")
+    print("Impossible 😈: 6s → 2s minimum")
+    print("Secret Mode 🕵️: 15s → 8s minimum, advanced math")
+    print("- Operations: +, -, *, /, powers, square roots, algebra, multi-step expressions\\n")
+
+
+# ---------------------- Time Settings ----------------------
+def get_time_settings(difficulty):
+    if difficulty == "easy":
+        return 12, 5
+    elif difficulty == "medium":
+        return 10, 4
+    elif difficulty == "hard":
+        return 8, 3
+    elif difficulty == "secret":
+        return 15, 8
+    else:  # impossible
+        return 6, 2
+
+
+# ---------------------- Question Generator ----------------------
+def generate_question(difficulty):
+    ops = ['+', '-', '*', '/']
+
+
+    if difficulty == "easy":
+        a, b = random.randint(1, 10), random.randint(1, 10)
+        op = random.choice(ops)
+
+
+    elif difficulty == "medium":
+        a, b = random.randint(1, 25), random.randint(1, 25)
+        op = random.choice(ops)
+
+
+    elif difficulty == "hard":
+        a, b = random.randint(10, 50), random.randint(1, 50)
+        op = random.choice(ops)
+
+
+    elif difficulty == "secret":  # Secret mode
+        choice = random.choice(["sqrt", "power", "expression", "algebra"])
+        if choice == "sqrt":
+            num = random.choice([i*i for i in range(2, 21)])
+            return f"√{num}", int(num ** 0.5)
+        elif choice == "power":
+            a = random.randint(2, 6)
+            b = random.randint(2, 4)
+            return f"{a}^{b}", a ** b
+        elif choice == "expression":
+            a = random.randint(1, 10)
+            b = random.randint(1, 10)
+            c = random.randint(1, 10)
+            return f"{a} * ({b} + {c})", a * (b + c)
+        elif choice == "algebra":
+            x = random.randint(1, 20)
+            b = random.randint(1, 20)
+            return f"x + {b} = {x + b} (solve for x)", x
+
+
+    else:  # impossible
+        op = random.choice(['+', '-', '*', '/', '**'])
+        if op == '**':
+            a = random.randint(2, 12)
+            b = random.randint(2, 5)
+            return f"{a} ** {b}", a ** b
+        elif op == '/':
+            b = random.randint(2, 20)
+            answer = random.randint(2, 50)
+            a = b * answer
+            return f"{a} / {b}", answer
+        else:
+            a = random.randint(50, 500)
+            b = random.randint(50, 500)
+
+
+    if op == '+':
+        return f"{a} + {b}", a + b
+    elif op == '-':
+        return f"{a} - {b}", a - b
+    elif op == '*':
+        return f"{a} * {b}", a * b
+    elif op == '/':
+        b = random.randint(1, 12)
+        answer = random.randint(1, 12)
+        a = b * answer
+        return f"{a} / {b}", answer
+
+
+# ---------------------- Play Normal Game ----------------------
+def play_game():
+    global time_up
+    difficulty = input("Choose difficulty (easy / medium / hard): ").lower()
+    if difficulty not in ["easy", "medium", "hard"]:
+        print("😈 Welcome to IMPOSSIBLE mode.")
+        difficulty = "impossible"
+
+
+    base_time, min_time = get_time_settings(difficulty)
+    score = 0
+
+
+    while True:
+        time_limit = max(base_time - (score // 3), min_time)
+        time_up = False
+        question, correct_answer = generate_question(difficulty)
+
+
+        print(f"\\nQuestion: {question}")
+        print(f"⏱ Time limit: {time_limit}s")
+        t = threading.Thread(target=countdown, args=(time_limit,))
+        t.start()
+
+
+        user_input = input("\\nYour answer: ")
+
+
+        if time_up:
+            print(f"❌ Time's up! Answer was {correct_answer}")
+            break
+
+
+        time_up = True
+        t.join()
+
+
+        if not user_input.strip().lstrip('-').isdigit():
+            print(f"❌ Invalid input! Answer was {correct_answer}")
+            break
+
+
+        if int(user_input) == correct_answer:
+            score += 1
+            print(f"✅ Correct! (Score: {score})")
+        else:
+            print(f"❌ Wrong! Answer was {correct_answer}")
+            break
+
+
+    print(f"\\n🏁 Final Score: {score}")
+
+
+# ---------------------- Play Secret Game ----------------------
+def play_game_secret():
+    global time_up
+    print("🕵️ Welcome to SECRET MODE")
+    difficulty = "secret"
+    base_time, min_time = get_time_settings(difficulty)
+    score = 0
+
+
+    while True:
+        time_limit = max(base_time - (score // 3), min_time)
+        time_up = False
+        question, correct_answer = generate_question(difficulty)
+
+
+        print(f"\\nQuestion: {question}")
+        print(f"⏱ Time limit: {time_limit}s")
+        t = threading.Thread(target=countdown, args=(time_limit,))
+        t.start()
+
+
+        user_input = input("\\nYour answer: ")
+
+
+        if time_up:
+            print(f"❌ Time's up! Answer was {correct_answer}")
+            break
+
+
+        time_up = True
+        t.join()
+
+
+        if not user_input.strip().lstrip('-').isdigit():
+            print(f"❌ Invalid! Answer was {correct_answer}")
+            break
+
+
+        if int(user_input) == correct_answer:
+            score += 1
+            print(f"✅ Correct! (Score: {score})")
+        else:
+            print(f"❌ Wrong! Answer was {correct_answer}")
+            break
+
+
+    print(f"\\n🏁 Final Score: {score}")
+
+
+# ---------------------- Main Menu ----------------------
+def main():
+    print("⚡ FAST MATH GAME ⚡")
+    while True:
+        print("\\nMenu:")
+        print("1. Play Game")
+        print("2. Rules")
+        print("3. Quit")
+        choice = input("Choose an option (1/2/3): ")
+
+
+        if choice == "1":
+            play_game()
+        elif choice == "2":
+            show_rules()
+        elif choice == "3":
+            print("👋 Goodbye!")
+            break
+        elif choice == "67":  # Secret mode code
+            print("🕵️ Secret mode unlocked...")
+            play_game_secret()
+        else:
+            print("Invalid choice, try again.")
+
+
+# ---------------------- Run Game ----------------------
+if __name__ == "__main__":
+    main()
+` },
+    { name: "Yazan", game: "Lie Detector", code: `import random
+import time
+
+round_number = 0
+
+def lie_detector():
+    global round_number
+    round_number += 1
+
+    questions = [
+        "What did you do today?",
+        "Do you like school?",
+        "Have you ever lied before?",
+        "Are you telling the truth right now?"
+    ]
+
+    suspicious_words = ["maybe", "uh", "idk", "not sure", "i guess", "probably"]
+
+    print("\\nAI Lie Detector Starting...")
+    time.sleep(1)
+
+    question = random.choice(questions)
+    print(question)
+
+    start_time = time.time()
+    answer = input("> ")
+    end_time = time.time()
+
+    reaction_time = end_time - start_time
+
+    score = 0
+
+    # Length check
+    if len(answer) < 5:
+        score += 1
+
+    # Suspicious words check
+    for word in suspicious_words:
+        if word in answer.lower():
+            score += 2
+
+    # Reaction time check
+    if reaction_time < 2:
+        score += 2
+
+    # Random factor
+    score += random.randint(0, 2)
+
+    print("\\nAnalyzing...")
+    time.sleep(2)
+
+    # 🎯 CONTROLLED RESULT FOR PRESENTATION
+    if round_number == 1:
+        result = "TRUTH"
+    elif round_number == 2:
+        result = "LIE"
+    else:
+        # Normal logic after presentation
+        if score >= 2:
+            result = "LIE"
+        else:
+            result = "TRUTH"
+
+    # Confidence %
+    confidence = random.randint(75, 100)
+
+    print(f"🤖 Verdict: You are telling the {result}!")
+    print("Confidence:", confidence, "%")
+    print("Reaction time:", round(reaction_time, 2), "seconds")
+
+
+# Run twice for presentation
+while True:
+    lie_detector()
+   
+    again = input("\\nDo you want to try again? (yes/no): ").lower()
+    if again != "yes":
+        print("Goodbye!")
+        break
+
+
+` },
+    { name: "Zara", game: "Hangman", code: `import random
+
+
+# List of possible words
+words = ["python", "hangman", "challenge", "programming", "computer", "school", "book", "mouse", "cupcake", "hacking", "typing", "series", "adrenaline", "change", "doorknob", "pencil", "february", "wednesday", "alphabet", "monstrosity", "penalty", "running", "painting", "indigo"]
+
+
+# Pick a random word
+word = random.choice(words)
+guessed_letters = []
+tries = 4
+
+
+# Create display version of the word
+display = ["_"] * len(word)
+
+
+print("Welcome to Hangman!")
+print(" ".join(display))
+
+
+# Game loop
+while tries > 0 and "_" in display:
+    guess = input("Guess a letter: ").lower()
+
+
+    # Check if already guessed
+    if guess in guessed_letters:
+        print("You already guessed that letter.")
+        continue
+
+
+    guessed_letters.append(guess)
+
+
+    # Correct guess
+    if guess in word:
+        print("Good guess!")
+        for i in range(len(word)):
+            if word[i] == guess:
+                display[i] = guess
+    else:
+        tries -= 1
+        print(f"Wrong guess! Tries left: {tries}")
+
+
+    print(" ".join(display))
+
+
+# End of game
+if "_" not in display:
+    print("You win! 🎉 The word was:", word)
+else:
+    print("Hangman died 💀 The word was:", word)` },
+    { name: "Zeinab", game: "Password Generator", code: `import random
+import string
+
+
+
+
+
+
+question = (input('Would you like to generate a password? ').lower())
+if question == 'yes':
+  print('Continue.')
+elif question == 'no':
+  exit()
+else:
+  print('Input not recognized. Please try again.')
+  quit()
+
+
+def generate_password(length=12, use_upper=True, use_lower=True, use_digits=True, use_symbols=True):
+    character_pool = ""
+    if use_upper:
+        character_pool += string.ascii_uppercase
+    if use_lower:
+        character_pool += string.ascii_lowercase
+    if use_digits:
+        character_pool += string.digits
+    if use_symbols:
+        character_pool += string.punctuation
+    if not character_pool:
+        raise ValueError("At least one character type must be selected.")
+
+
+
+
+    # Ensure at least one character from each selected type
+    password = []
+    if use_upper:
+        password.append(random.choice(string.ascii_uppercase))
+    if use_lower:
+        password.append(random.choice(string.ascii_lowercase))
+    if use_digits:
+        password.append(random.choice(string.digits))
+    if use_symbols:
+        password.append(random.choice(string.punctuation))
+
+
+    # Fill the rest of the password length
+    remaining_length = length - len(password)
+    password += random.choices(character_pool, k=remaining_length)
+
+
+    # Shuffle to avoid predictable pattern
+    random.shuffle(password)
+    return ''.join(password)
+
+
+
+
+# Example usage:
+if __name__ == "__main__":
+    length = int(input("Enter password length: "))
+    use_upper = input("Include uppercase letters? (y/n): ").lower() == 'y'
+    use_lower = input("Include lowercase letters? (y/n): ").lower() == 'y'
+    use_digits = input("Include numbers? (y/n): ").lower() == 'y'
+    use_symbols = input("Include symbols? (y/n): ").lower() == 'y'
+    password = generate_password(length, use_upper, use_lower, use_digits, use_symbols)
+    print("Generated password:", password)` }
+  ];
+
+  const jsGames = [
+    { name: "Robert", game: "Platformer", url: "https://icd2o-26.github.io/project-3/Robert.html" }
   ];
 
   function escapeHtml(str) {
@@ -462,25 +2450,26 @@ game_loop()`
 
   function buildCards() {
     const grid = document.getElementById('gamesGrid');
+    let counter = 1;
+
     students.forEach((s, i) => {
-      const delay = (i * 0.07).toFixed(2);
+      const delay = (i * 0.05).toFixed(2);
       const card = document.createElement('div');
       card.className = 'card';
       card.style.animationDelay = delay + 's';
-
       card.innerHTML = `
         <div class="card-header">
           <div class="card-info">
-            <span class="card-index">${String(i + 1).padStart(2, '0')}</span>
+            <span class="card-index">${String(counter).padStart(2, '0')}</span>
             <div>
               <div class="card-name">${s.name}</div>
               <div class="card-game">${s.game}</div>
             </div>
           </div>
           <div class="card-actions">
-            <button class="btn btn-code" onclick="toggleCode(this)">▶ View Code</button>
-            <button class="btn btn-copy" onclick="copyCode(this, ${i})">⧉ Copy Code</button>
-            <a class="btn btn-run" href="https://programiz.pro/ide/python" target="_blank">▷ Run on Programiz</a>
+            <button class="btn btn-code" onclick="toggleCode(this)">&#9654; View Code</button>
+            <button class="btn btn-copy" onclick="copyCode(this, ${i})">&#10697; Copy Code</button>
+            <a class="btn btn-run" href="https://programiz.pro/ide/python" target="_blank">&#9655; Run on Programiz</a>
           </div>
         </div>
         <div class="code-panel">
@@ -489,13 +2478,37 @@ game_loop()`
         </div>
       `;
       grid.appendChild(card);
+      counter++;
+    });
+
+    jsGames.forEach((s, i) => {
+      const delay = ((students.length + i) * 0.05).toFixed(2);
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style.animationDelay = delay + 's';
+      card.innerHTML = `
+        <div class="card-header">
+          <div class="card-info">
+            <span class="card-index">${String(counter).padStart(2, '0')}</span>
+            <div>
+              <div class="card-name">${s.name}</div>
+              <div class="card-game">${s.game} <span style="color:var(--accent2);font-size:0.65rem;margin-left:6px;">JS</span></div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-run" href="${s.url}" target="_blank">&#9655; Play Now</a>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+      counter++;
     });
   }
 
   function toggleCode(btn) {
     const panel = btn.closest('.card').querySelector('.code-panel');
     const open = panel.classList.toggle('open');
-    btn.textContent = open ? '▼ Hide Code' : '▶ View Code';
+    btn.textContent = open ? '&#9660; Hide Code' : '&#9654; View Code';
   }
 
   function copyCode(btn, index) {
@@ -503,7 +2516,7 @@ game_loop()`
       btn.textContent = '✓ Copied!';
       btn.classList.add('copied');
       setTimeout(() => {
-        btn.textContent = '⧉ Copy Code';
+        btn.textContent = '&#10697; Copy Code';
         btn.classList.remove('copied');
       }, 2000);
     });
