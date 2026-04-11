@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        button { padding: 10px 20px; background-color: #007acc; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #005a9e; }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <script>
+
+                // Character setup
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Physics constants
+        const GRAVITY = 1;
+        const FRICTION = 0.95;
+        const MAX_FALL_SPEED = 12; // Limit fall speed to prevent going through platforms
+
+        // Player character
+        const player = {
+            x: 100,
+            y: 300,
+            width: 40,
+            height: 40,
+            vx: 0,
+            vy: 0,
+            speed: 8,
+            jumpPower: -30,
+            grounded: false,
+            highestY: canvas.height - 100 // Track highest position (initially at start)
+        };
+
+        // Camera object for vertical following
+        const camera = {
+            x: 0,
+            y: 0
+        };
+
+                // Platform management constants
+        const PLATFORM_WIDTH = 120;
+        const PLATFORM_HEIGHT = 20;
+        const PLATFORM_GAP_MIN = 80;
+        const PLATFORM_GAP_MAX = 150;
+        const MIN_PLATFORMS_BELOW_CAMERA = 2;
+
+        // Generate platforms dynamically as player ascends
+        function generatePlatforms() {
+            const platforms = [];
+
+            // Initial platform at ground level
+            platforms.push({
+                x: Math.floor(Math.random() * (canvas.width - PLATFORM_WIDTH)),
+                y: canvas.height - 20,
+                width: PLATFORM_WIDTH,
+                height: PLATFORM_HEIGHT
+            });
+
+            return platforms;
+        }
+
+        const platforms = generatePlatforms();
+        // Input state
+        const keys = {};
+
+        // Event listeners for keyboard input
+        document.addEventListener('keydown', (e) => {
+            keys[e.key] = true;
+        });
+
+        document.addEventListener('keyup', (e) => {
+            keys[e.key] = false;
+        });
+
+                                // Game loop
+        function update() {
+            // Apply gravity first
+            player.vy += GRAVITY;
+
+            // Horizontal movement with WASD (A/D don't affect vertical)
+            if ((keys['a'] || keys['A'])) player.vx -= 0.8;
+            if ((keys['d'] || keys['D'])) player.vx += 0.8;
+
+            // Apply friction to slow down
+            player.vx *= FRICTION;
+
+            // Jump if grounded and W key is pressed
+            if ((keys['w'] || keys['W']) && player.grounded) {
+                player.vy = player.jumpPower;
+                player.grounded = false;
+            }
+
+            // Update position
+            player.x += player.vx;
+            player.y += player.vy;
+
+            // Screen boundary limits (before collision checks for consistency)
+            if (player.x < 0) player.x = 0;
+            if (player.x + player.width > canvas.width) player.x = canvas.width - player.width;
+
+                        // Platform collisions (check first, before ground - with proper overlap resolution)
+            let onPlatform = false;
+            for (let i = platforms.length - 1; i >= 0; i--) {
+                let p = platforms[i];
+                // Check if player is within horizontal bounds and falling downwards
+                const overlappingX = player.x < p.x + p.width && player.x + player.width > p.x;
+                const overlappingYBottom = (player.y + player.height) - p.y <= player.vy;
+                
+                if (overlappingX && overlappingYBottom && player.vy >= 0) {
+                    // Calculate how much we're penetrating the platform
+                    const penetration = p.y - (player.y + player.height);
+                    
+                    if (penetration < player.height) {
+                        // Move player out of platform and stop vertical velocity
+                        player.y = p.y - player.height;
+                        player.vy = 0;
+                        onPlatform = true;
+                    }
+                }
+            }
+
+                        // Ground collision (after platforms, only if not standing on one)
+            const groundLevel = canvas.height - 20;
+            if (!onPlatform && player.y + player.height >= groundLevel) {
+                player.y = groundLevel - player.height;
+                player.vy = 0;
+                player.grounded = true;
+            } else if (onPlatform) {
+                player.grounded = true;
+            } else {
+                player.grounded = false;
+            }
+
+            // Reset to ground when falling past all platforms
+            const lowestPlatform = Math.max(...platforms.map(p => p.y));
+            if (player.y > lowestPlatform + 100 && !onPlatform) {
+                player.y = groundLevel - player.height;
+                player.vy = 0;
+                player.grounded = true;
+            }
+
+                        // Camera follows player vertically rigidly with player centered on screen
+                        const targetY = player.y - (canvas.height - player.height) / 2; // Center player vertically
+                        camera.y = targetY; // Rigid follow (no lerp, no clamping)
+
+                        // Dynamic platform generation: add new platforms above as player ascends
+                        if (player.y < canvas.height - 100) {
+                            const highestPlatform = Math.min(...platforms.map(p => p.y));
+                            // Generate earlier - when there's space above the camera view
+                            const screenTopY = canvas.height - 20;
+                            const lowestOnScreen = platformPos = screenTopY + (player.y - camera.y);
+                            if (highestPlatform > player.y + PLATFORM_GAP_MIN * 0.5) {
+                                // Add a new platform above the current highest one
+                                const newY = highestPlatform - (Math.floor(Math.random() * (PLATFORM_GAP_MAX - PLATFORM_GAP_MIN + 1)) + PLATFORM_GAP_MIN);
+                                platforms.push({
+                                    x: Math.floor(Math.random() * (canvas.width - PLATFORM_WIDTH)),
+                                    y: newY,
+                                    width: PLATFORM_WIDTH,
+                                    height: PLATFORM_HEIGHT
+                                });
+                            }
+                        }
+
+            // Remove old platforms that are far below the camera (keep only 1 platform below)
+            const minVisibleY = canvas.height - 100;
+            for (let i = platforms.length - 1; i >= 0; i--) {
+                if (platforms[i].y > minVisibleY + PLATFORM_GAP_MAX * 2 && platforms.length > 1) {
+                    platforms.splice(i, 1);
+                }
+            }
+
+        }
+
+                                                                function draw() {
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw ground (shifted by camera)
+            const groundY = (canvas.height - 20) - camera.y;
+            ctx.fillStyle = '#4a3f35';
+            ctx.fillRect(0, groundY, canvas.width, 20);
+
+            // Draw platforms (shifted by camera)
+            for (let i = 0; i < platforms.length; i++) {
+                ctx.fillStyle = '#8d6e63';
+                ctx.fillRect(platforms[i].x - camera.x, platforms[i].y - camera.y, platforms[i].width, platforms[i].height);
+            }
+
+            // Draw player character (shifted by camera)
+            ctx.fillStyle = '#ff6b6b';
+            ctx.fillRect(player.x - camera.x, player.y - camera.y, player.width, player.height);
+        }
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Start the game loop
+        gameLoop();
+    </script>
+</body>
+</html>
+
+
+Platform ... it3.html
+External
+Displaying PlatformerUnit3.html.
