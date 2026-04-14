@@ -2673,7 +2673,84 @@ while True:
 
     if again != "yes":
         print("Thanks for playing!")
-        break` }
+        break` },
+    { name: "Ayaan", game: "Tic-Tac-Toe", code: `import random
+
+# Board setup
+board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+# Display the board
+def display_board():
+    print("\\n")
+    print(board[0] + " | " + board[1] + " | " + board[2])
+    print("--+---+--")
+    print(board[3] + " | " + board[4] + " | " + board[5])
+    print("--+---+--")
+    print(board[6] + " | " + board[7] + " | " + board[8])
+    print("\\n")
+
+# Check for winner
+def check_winner(player):
+    win_conditions = [
+        [0,1,2], [3,4,5], [6,7,8], # rows
+        [0,3,6], [1,4,7], [2,5,8], # columns
+        [0,4,8], [2,4,6]           # diagonals
+    ]
+    for condition in win_conditions:
+        if board[condition[0]] == board[condition[1]] == board[condition[2]] == player:
+            return True
+    return False
+
+# Player move
+def player_move():
+    try:
+        move = int(input("Choose a position (1-9): ")) - 1
+        if 0 <= move <= 8 and board[move] == " ":
+            board[move] = "X"
+        else:
+            print("Invalid move or spot taken! Try again.")
+            player_move()
+    except ValueError:
+        print("Please enter a number.")
+        player_move()
+
+# Computer move
+def computer_move():
+    available = [i for i in range(9) if board[i] == " "]
+    if available: # Only move if there is space left
+        move = random.choice(available)
+        board[move] = "O"
+
+# Main game loop
+def main():
+    print("Welcome to Tic-Tac-Toe!")
+    display_board()
+
+    while True:
+        # Player's Turn
+        player_move()
+        display_board()
+        if check_winner("X"):
+            print("You win!")
+            break
+        
+        # Check for Draw
+        if " " not in board:
+            print("It's a draw!")
+            break
+
+        # Computer's Turn
+        print("Computer is thinking...")
+        computer_move()
+        display_board()
+        if check_winner("O"):
+            print("Computer wins!")
+            break
+
+if __name__ == "__main__":
+    main()
+
+` }
   ];
 
   const jsGames = [
