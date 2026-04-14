@@ -9,11 +9,11 @@
     :root {
       --bg: #0d0d0f;
       --surface: #16161a;
-      --border: #2a2a32;
+      --border: #3a3a48;
       --accent: #c8f04a;
       --accent2: #4af0c8;
       --text: #e8e8f0;
-      --muted: #7a7a90;
+      --muted: #a8a8c0;
       --code-bg: #0a0a0c;
       --radius: 4px;
     }
@@ -2824,15 +2824,15 @@ if __name__ == "__main__":
   function toggleCode(btn) {
     const panel = btn.closest('.card').querySelector('.code-panel');
     const open = panel.classList.toggle('open');
-    btn.textContent = open ? '&#9660; Hide Code' : '&#9654; View Code';
+    btn.innerHTML = open ? '&#9660; Hide Code' : '&#9654; View Code';
   }
 
   function copyCode(btn, index) {
     navigator.clipboard.writeText(students[index].code).then(() => {
-      btn.textContent = '✓ Copied!';
+      btn.innerHTML = '✓ Copied!';
       btn.classList.add('copied');
       setTimeout(() => {
-        btn.textContent = '&#10697; Copy Code';
+        btn.innerHTML = '&#10697; Copy Code';
         btn.classList.remove('copied');
       }, 2000);
     });
